@@ -32,6 +32,10 @@ namespace HasanFurkanFidanBlogService
             services.AddScoped<ICommentDal, CommnetDal>();
             services.AddScoped<ICategoryDal, CategoryDal>();
             services.AddControllers();
+            services.AddCors(opt =>
+            {
+                opt.AddDefaultPolicy(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HasanFurkanFidanBlogService", Version = "v1" });
@@ -49,7 +53,8 @@ namespace HasanFurkanFidanBlogService
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors();
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthorization();
