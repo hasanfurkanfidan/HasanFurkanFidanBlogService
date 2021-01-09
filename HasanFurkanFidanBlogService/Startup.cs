@@ -1,3 +1,5 @@
+using HasanFurkanFidanBlogService.DataAccess.EntityFramework.Repositories;
+using HasanFurkanFidanBlogService.DataAccess.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +28,9 @@ namespace HasanFurkanFidanBlogService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<IArticleDal, ArticleDal>();
+            services.AddScoped<ICommentDal, CommnetDal>();
+            services.AddScoped<ICategoryDal, CategoryDal>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
