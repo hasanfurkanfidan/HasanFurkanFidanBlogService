@@ -17,6 +17,7 @@ namespace HasanFurkanFidanBlogService.Entities
         public int ViewCount { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public List<Comment> Comments { get; set; }
         public DateTime PublishDate { get; set; }
     }
 }
