@@ -28,7 +28,7 @@ namespace HasanFurkanFidanBlogService.DataAccess.EntityFramework.Repositories
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
         {
             using var context = new Context();
-            return await context.Set<TEntity>().FindAsync();
+            return await context.Set<TEntity>().FirstOrDefaultAsync(filter);
         }
 
         public async Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter)
